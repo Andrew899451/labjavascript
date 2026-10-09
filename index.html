@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+</head>
+<body>
+
+    <h1>Type your email</h1>
+
+    <input type="text" id="email">
+    <div id="error"></div>
+    <button id="button">Submit</button>
+    
+    <script>
+        const btn = document.getElementById('button');
+        const emailInput = document.getElementById('email');
+        const errorDiv = document.getElementById('error');
+
+        function validateEmail(email) {
+            return /^[andjey687]+@[gmail]+\.com$/.test(email);
+        }
+
+        btn.addEventListener('click', () => {
+            const value = emailInput.value.trim();
+            if (!validateEmail(value)) {
+                emailInput.style.border = '2px solid red';
+                errorDiv.textContent = 'Please enter a valid email address.';
+                errorDiv.style.color = 'red';
+                emailInput.focus();
+            } else {
+                emailInput.style.border = '2px solid green';
+                errorDiv.textContent = '';
+                errorDiv.style.color = '';
+                console.log('Email valid:', value);
+            }
+        });
+    </script>
+
+</body>
+</html>
